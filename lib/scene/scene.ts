@@ -2,9 +2,7 @@ import { createCanvas } from "canvas";
 import CinemaniaAnimation from "../animation/animation";
 import CObject from "../cobjects/cobject";
 import fs from "fs"
-import accurate from 'accurate'
 import { getDuration } from "../utils/sceneUtils";
-import { secToFrame } from "../utils/timeUtils";
 import Ffmpeg from "fluent-ffmpeg";
 
 interface KeyFrame {
@@ -34,10 +32,10 @@ class CinemaniaScene {
         const children = [...this.children]
         let frame = 0
         // let command = Ffmpeg().outputFPS(60)
-        while (frame < secToFrame(getDuration(this), 60)) {
+        while (frame < getDuration(this)) {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             this.animations.forEach(animation => {
-                if (secToFrame(animation.startTime, 60) === frame) {
+                if (animation.startTime === frame) {
                     const keyframes = animation.run()
                     let parsed: ParsedAnimation = {
                         object: animation.object,
@@ -85,7 +83,7 @@ class CinemaniaScene {
         // command.saveToFile('/Users/yifanwang/Downloads/cinemania/output.mp4')
     }
     play(animation: CinemaniaAnimation) {
-        animation.startTime === -1 && animation.setStartTime(accurate.add(getDuration(this), 0.2))
+        animation.startTime === -1 && animation.setStartTime(getDuration(this) + 20)
         this.animations.push(animation)
     }
 }

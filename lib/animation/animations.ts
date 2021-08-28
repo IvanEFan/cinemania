@@ -1,5 +1,4 @@
 import CObject from "../cobjects/cobject";
-import { frameToSec } from "../utils/timeUtils";
 import CinemaniaAnimation, { CinemaniaAnimationOptions } from "./animation";
 
 class TransformAnimation extends CinemaniaAnimation {
@@ -11,7 +10,7 @@ class TransformAnimation extends CinemaniaAnimation {
         this.to = to
     }
     getDefaultDuration() {
-        return frameToSec(6, 60)
+        return 6
     }
     run() {
         let states: any = {}
@@ -35,7 +34,7 @@ class FadeInAnimation extends CinemaniaAnimation {
         super(object, options)
     }
     getDefaultDuration() {
-        return frameToSec(6, 60)
+        return 6
     }
     run() {
         return {
@@ -49,7 +48,7 @@ class FadeOutAnimation extends CinemaniaAnimation {
         super(object, options)
     }
     getDefaultDuration() {
-        return frameToSec(6, 60)
+        return 6
     }
     run() {
         return {

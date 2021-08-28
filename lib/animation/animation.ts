@@ -1,5 +1,4 @@
 import CObject from "../cobjects/cobject";
-import { frameToSec } from "../utils/timeUtils";
 
 export interface CinemaniaAnimationOptions {
     startTime?: number
@@ -22,7 +21,7 @@ class CinemaniaAnimation {
         this.duration = duration
     }
     setDurationByFrame(time: number) {
-        this.duration = frameToSec(time, 60)
+        this.duration = time
     }
     getDefaultDuration() {
         return -1

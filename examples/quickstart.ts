@@ -12,10 +12,10 @@ builder.addScene(scene)
 
 const title = new CText('Helloworld!', { x: 100, y: 100 })
 scene.add(title)
-// scene.play(title.animations.fadeIn())
-// scene.play(title.animations.fadeOut())
-scene.play(new TransformAnimation(title, { opacity: 0 }, { opacity: 1 }))
+scene.play(title.animations.fadeIn())
+scene.play(title.animations.fadeOut())
+// scene.play(new TransformAnimation(title, { opacity: 0 }, { opacity: 1 }))
 
 builder.start()
 
-console.log(getDuration(scene) + ' s')
+console.log(getDuration(scene) + ' frames')
