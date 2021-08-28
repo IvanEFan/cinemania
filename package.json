@@ -1,0 +1,19 @@
+{
+  "name": "cinemania",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "example": "tsc && node ./dist/examples/quickstart.js",
+    "test": "tsc && node ./dist/test/test.js"
+  },
+  "author": "IvanEFan",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@types/fluent-ffmpeg": "^2.1.18",
+    "accurate": "^1.5.7",
+    "canvas": "^2.8.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "typescript": "^4.4.2"
+  }
+}
