@@ -83,7 +83,7 @@ class CinemaniaScene {
         // command.saveToFile('/Users/yifanwang/Downloads/cinemania/output.mp4')
     }
     play(animation: CinemaniaAnimation) {
-        animation.startTime === -1 && animation.setStartTime(getDuration(this) + 20)
+        animation.startTime === -1 && animation.setStartTime(getDuration(this) + 10)
         this.animations.push(animation)
     }
 }

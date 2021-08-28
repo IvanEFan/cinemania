@@ -1,4 +1,5 @@
 import CObject from "../cobjects/cobject";
+import { generateAnimation } from "../utils/animationUtils";
 import CinemaniaAnimation, { CinemaniaAnimationOptions } from "./animation";
 
 class TransformAnimation extends CinemaniaAnimation {
@@ -10,7 +11,7 @@ class TransformAnimation extends CinemaniaAnimation {
         this.to = to
     }
     getDefaultDuration() {
-        return 6
+        return 10
     }
     run() {
         let states: any = {}
@@ -22,38 +23,22 @@ class TransformAnimation extends CinemaniaAnimation {
         }
         for (let prop in this.from) {
             if (prop in this.to) {
-                states[prop] = [this.from[prop], this.to[prop]]
+                states[prop] = generateAnimation(this.from[prop], this.to[prop], this.duration)
             }
         }
         return states
     }
 }
 
-class FadeInAnimation extends CinemaniaAnimation {
+class FadeInAnimation extends TransformAnimation {
     constructor(object: CObject, options?: CinemaniaAnimationOptions) {
-        super(object, options)
-    }
-    getDefaultDuration() {
-        return 6
-    }
-    run() {
-        return {
-            opacity: [0, 0.2, 0.4, 0.6, 0.8, 1]
-        }
+        super(object, { opacity: 0 }, { opacity: 1 }, options)
     }
 }
 
-class FadeOutAnimation extends CinemaniaAnimation {
+class FadeOutAnimation extends TransformAnimation {
     constructor(object: CObject, options?: CinemaniaAnimationOptions) {
-        super(object, options)
-    }
-    getDefaultDuration() {
-        return 6
-    }
-    run() {
-        return {
-            opacity: [1, 0.8, 0.6, 0.4, 0.2, 0]
-        }
+        super(object, { opacity: 1 }, { opacity: 0 }, options)
     }
 }
 

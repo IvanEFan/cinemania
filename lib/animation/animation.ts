@@ -8,7 +8,7 @@ export interface CinemaniaAnimationOptions {
 class CinemaniaAnimation {
     object: CObject
     startTime: number = 0
-    duration: number = 0    // In sec
+    duration: number = 0
     constructor(object: CObject, options?: CinemaniaAnimationOptions) {
         this.object = object
         this.startTime = options?.startTime ?? -1
